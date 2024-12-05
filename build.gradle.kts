@@ -41,16 +41,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
 }
 
-allprojects {
-    configurations.all {
-        resolutionStrategy {
-            force("org.seleniumhq.selenium:selenium-java:4.27.0")
-            force("org.seleniumhq.selenium:selenium-chrome-driver:4.27.0")
-            force("org.seleniumhq.selenium:selenium-devtools-v131:4.27.0")
-        }
-    }
-}
-
 tasks.withType<Test> {
     useJUnitPlatform()
 }
