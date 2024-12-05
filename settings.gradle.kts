@@ -1,1 +1,1 @@
-rootProject.name = "undetected.chrome.driver"
+rootProject.name = "undetected-chrome-driver"

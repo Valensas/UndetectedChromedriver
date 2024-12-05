@@ -32,10 +32,23 @@ repositories {
 }
 
 dependencies {
-    implementation("org.seleniumhq.selenium:selenium-java:4.27.0")
-    implementation("io.github.bonigarcia:webdrivermanager:5.9.2")
-    implementation("com.alibaba:fastjson:2.0.53")
+    api("org.seleniumhq.selenium:selenium-java:4.27.0")
+    api("org.seleniumhq.selenium:selenium-devtools-v129:4.27.0")
+    api("org.seleniumhq.selenium:selenium-devtools-v130:4.27.0")
+    api("org.seleniumhq.selenium:selenium-devtools-v131:4.27.0")
+    api("io.github.bonigarcia:webdrivermanager:5.9.2")
+    api("com.alibaba:fastjson:2.0.53")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+}
+
+allprojects {
+    configurations.all {
+        resolutionStrategy {
+            force("org.seleniumhq.selenium:selenium-java:4.27.0")
+            force("org.seleniumhq.selenium:selenium-chrome-driver:4.27.0")
+            force("org.seleniumhq.selenium:selenium-devtools-v131:4.27.0")
+        }
+    }
 }
 
 tasks.withType<Test> {
@@ -64,7 +77,8 @@ centralPortal {
 
     pom {
         name = "Valensas Kafka"
-        description = "This library contains an Chrome driver implementation which is implemented to avoid bot detections for a selenium project"
+        description = "This library contains an Chrome driver implementation which is " +
+                "implemented to avoid bot detections for a selenium project"
         url = "https://valensas.com/"
         scm {
             url = "https://github.com/Valensas/UndetectedChromeDriver"
